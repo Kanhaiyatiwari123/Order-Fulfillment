@@ -23,10 +23,37 @@ export default function FulfillmentPage() {
     localStorage.setItem("orders", JSON.stringify(updatedData));
   };
 
+
+  // Delete order and update local storage
+  const deleteOrder = (orderId: number) => {
+    const updatedData = data.filter(order => order.id !== orderId);
+    setData(updatedData);
+    localStorage.setItem("orders", JSON.stringify(updatedData));
+  };
+
+  // Pass deleteOrder function to each row
+  const columnsWithDelete = columns.map(column => {
+    if (column.id === "actions") {
+      return {
+        ...column,
+        cell: ({ row }: { row: { original: Order } }) => (
+          <button
+            className="text-red-500 hover:underline"
+            onClick={() => deleteOrder(row.original.id)}
+          >
+            Delete
+          </button>
+        ),
+      };
+    }
+    return column;
+  });
+
+
   return (
     <div className="container mx-auto py-10">
       <OrderForm onSubmit={addNewOrder} />
-      <DataTable columns={columns} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
+      <DataTable columns={columnsWithDelete} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
     </div>
   );
 }

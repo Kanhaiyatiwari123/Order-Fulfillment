@@ -34,4 +34,17 @@ export const columns: ColumnDef<Order>[] = [
     header: "Status",
   },
   
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => (
+      <button
+        className="text-red-500 hover:underline"
+        onClick={() => row.original.deleteOrder(row.original.id)}
+      >
+        Delete
+      </button>
+    ),
+  },
+  
 ];
