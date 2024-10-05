@@ -32,7 +32,7 @@ export default function FulfillmentPage() {
   };
 
   // Pass deleteOrder function to each row, in the column who's id is "actions"
-  const columnWithDelete = columns.map(column => {
+  const rowsWithDelete = columns.map(column => {
     if (column.id === "actions") {
       return {
         ...column,
@@ -53,7 +53,7 @@ export default function FulfillmentPage() {
   return (
     <div className="container mx-auto py-10">
       <OrderForm onSubmit={addNewOrder} />
-      <DataTable columns={columnWithDelete} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
+      <DataTable columns={rowsWithDelete} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
     </div>
   );
 }

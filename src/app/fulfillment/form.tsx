@@ -34,7 +34,7 @@ export function OrderForm({ onSubmit }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitForm)} className="flex gap-4 mb-6 flex-wrap">
+    <form onSubmit={handleSubmit(submitForm)} className="flex gap-4 mb-6 flex-wrap border-solid border-2 p-2">
       <div>
         <input type="number" {...register("id")} placeholder="Order ID" className="input" />
         {errors.id && <p className="text-red-500">{errors.id.message}</p>}
