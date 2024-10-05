@@ -31,8 +31,8 @@ export default function FulfillmentPage() {
     localStorage.setItem("orders", JSON.stringify(updatedData));
   };
 
-  // Pass deleteOrder function to each row
-  const columnsWithDelete = columns.map(column => {
+  // Pass deleteOrder function to each row, in the column who's id is "actions"
+  const columnWithDelete = columns.map(column => {
     if (column.id === "actions") {
       return {
         ...column,
@@ -53,7 +53,7 @@ export default function FulfillmentPage() {
   return (
     <div className="container mx-auto py-10">
       <OrderForm onSubmit={addNewOrder} />
-      <DataTable columns={columnsWithDelete} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
+      <DataTable columns={columnWithDelete} data={data} />    {/*this simple columns and data are predefined and curly braces one {} are defined by us*/}
     </div>
   );
 }
