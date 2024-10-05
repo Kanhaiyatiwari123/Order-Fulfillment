@@ -61,6 +61,7 @@ export function OrderForm({ onSubmit }: FormProps) {
       </div>
 
       <div>
+        <label>Date:</label>
         <input
           type="date"
           {...register("orderDate")}
